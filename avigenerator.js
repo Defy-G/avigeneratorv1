@@ -1,13 +1,11 @@
-<html>
-
-<head>
-    
-    <title>Pixel Random Avatar Generator</title>
-
-    <script>
-    
-    window.onload = function ()
+window.onload = function ()
         {
+
+        // BACKGROUND
+        var pixelbg = new Image();
+        var pixelbgnum=Math.floor(Math.random()*12)+1; // change '12' to whatever number of background files you have
+        var pixelbgname="bg" + pixelbgnum + ".png";
+        pixelbg.src=pixelbgname;
 
         // BODY
         var pixelbody = new Image();
@@ -38,6 +36,18 @@
         var pixelclothesnum=Math.floor(Math.random()*12)+1; // change '12' to whatever number of clothe files you have
         var pixelclothesname="clothes" + pixelclothesnum + ".png";
         pixelclothes.src=pixelclothesname;
+
+        // BACKGROUND
+        var pixelbg = new Image();
+        var pixelbgnum=Math.floor(Math.random()*12)+1; // change '12' to whatever number of background files you have
+        var pixelbgname="bg" + pixelbgnum + ".png";
+        pixelbg.src=pixelbgname;
+
+        // BACKGROUND LOADED
+        pixelbg.onload=function()
+        {
+            buildavatar();
+        }
 
         // BODY LOADED
         pixelbody.onload=function()
@@ -76,36 +86,19 @@
         canvas.width=256;
         canvas.height=256;
 
+        //DRAW BG
+        ctx.drawImage(pixelbg,0,0);
         //DRAW BODY
-        ctx.drawImage(pixelbody,((256-pixelbody.width)/2),0);
+        ctx.drawImage(pixelbody,0,0);
         //DRAW EYES
-        ctx.drawImage(pixeleyes,((256-pixeleyes.width)/2),0);
+        ctx.drawImage(pixeleyes,0,0);
         //DRAW HAIR
-        ctx.drawImage(pixelhair,((256-pixelhair.width)/2),0);
+        ctx.drawImage(pixelhair,0,0);
         //DRAW MOUTH
-        ctx.drawImage(pixelmouth,((256-pixelmouth.width)/2),0);
+        ctx.drawImage(pixelmouth,0,0);
         //DRAW CLOTHES
-        ctx.drawImage(pixelclothes,((256-pixelclothes.width)/2),0);
+        ctx.drawImage(pixelclothes,0,0);
 
         }
 
     }
-
-    </script>
-
-</head>
-
-<body>
-
-    <div align="center">  
-        
-<canvas id="canvas" style="border:5px solid #000000;">
-</canvas>
-<br><br>
-<button onClick="window.location.reload();">Randomize!</button>
-
-    </div>
-    
-</body>
-
-</html>
